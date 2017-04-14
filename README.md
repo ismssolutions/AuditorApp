@@ -11,7 +11,7 @@ The application requires both a _Document_ and _Transaction ID_. Both should be 
 - jquery (v 1.12.4)
 - Stanford Javascript Crypto Library (v 1.0.6)
 - Bootstrap (3.3.7)
-- Valid Catenis Enterprise Bitcoin Trnsaction
+- Valid Catenis Enterprise bitcoin transaction entries
 
 ## Prerequisites
 - BlockTrail API access Key (https://www.blocktrail.com/dev/signup)
