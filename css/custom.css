@@ -1,0 +1,28 @@
+.droppable {
+    background-color: #337ab7;
+    outline: 2px dashed #46a2cc;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 100px 0;
+    text-align: center;
+}
+.droppable.dragover {
+    background: #dff0d8;
+}
+
+.row{
+    padding-bottom: 20px;
+}
+
+a {
+    color: #acb7c1;
+    text-decoration: none;
+}
+a:hover{
+    color: #fbfbfb;
+    text-decoration: none;
+}
+p {
+    font-size: 23px;
+}
