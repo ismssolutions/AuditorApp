@@ -412,11 +412,25 @@
 
 	<script type="text/javascript">
 
-		// ***
-		// *** Replace with your own Blocktrail API key
-		// ***
-		DocValidator.blkTrailApiKey = 'replaceWithYourKey';
 		inputFile = undefined;
+		
+		function requireApiKey() {
+			
+			if (DocValidator.blkTrailApiKey && DocValidator.blkTrailApiKey.length > 0) {
+				return true;
+			}
+			
+			var btApiKey = prompt("Please enter your BlockTrail API Key");
+			if (btApiKey && btApiKey.length > 0) {
+				DocValidator.blkTrailApiKey = btApiKey;
+				return true;
+			}
+			alert('BlockTrail cannot be queried without a valid API Key.\n'
+			     +'You can get one by creating a free account at:\n'
+			     +'https://www.blocktrail.com/');
+			return false;
+		}
+		
 		function requireDocument() {
 			var docFiles = inputFile;
 
@@ -443,7 +457,7 @@
 		}
 
 		function isValidInputData() {
-			return requireDocument() && requireTxid();
+			return requireApiKey() && requireDocument() && requireTxid();
 		}
 
 		function disableForm(disable) {
