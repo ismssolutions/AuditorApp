@@ -63,6 +63,7 @@
 	</div>
 	<div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
 		<p id="docHash"></p>
+		<p id="recordTime"></p>
 	</div>
 	<div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
 		<p id="msgBoard"></p>
@@ -133,9 +134,12 @@
 
 						if (ctnMessage) {
 							var dochash = document.getElementById('docHash');
-							dochash.innerText = "Hash in the transaction:\n" + ctnMessage;
+							dochash.innerText = "Hash in the transaction:\n" + ctnMessage.hash;
 							dochash.className = "bg-info";
-							if (ctnMessage === this.fileHash.data) {
+							var recordtime = document.getElementById('recordTime');
+							recordtime.innerText = "Date of Transaction:\n" + ctnMessage.first_seen;
+							recordtime.className = "bg-info";
+							if (ctnMessage.hash === this.fileHash.data) {
 								// Success: document is valid
 								this.result = {
 									hash: this.fileHash.data,
@@ -172,13 +176,17 @@
 
 			function getMessageFromCatenisTx() {
 				var txInfo = this.txInfo.data;
+				var message = null;
 
 				if (typeof txInfo === 'object' && txInfo !== null && typeof txInfo.outputs === 'object' && Array.isArray(txInfo.outputs)
 					&& txInfo.outputs.length > 0 && typeof txInfo.outputs[0] === 'object' && txInfo.outputs[0] !== null
 					&& txInfo.outputs[0].type === 'op_return' && typeof txInfo.outputs[0].script === 'string'
 					&& txInfo.outputs[0].script.startsWith(ctnNulldataScriptPrefix)) {
-					return txInfo.outputs[0].script.substr(ctnNulldataScriptPrefix.length);
+					message = {};
+					message.first_seen = txInfo.first_seen_at;
+					message.hash = txInfo.outputs[0].script.substr(ctnNulldataScriptPrefix.length);
 				}
+				return message;
 			}
 
 			function computeFileHash() {
