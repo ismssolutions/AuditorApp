@@ -1,547 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Independant Auditor App</title>
-    <meta name="description" content="Independant Auditor app built by Blockchain of Things, Inc.">
-    <meta name="author" content="Andre De Castro">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.6/sjcl.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/custom.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Independant Auditor App</title>
+	<meta name="description" content="Independant Auditor app built by Blockchain of Things, Inc.">
+	<meta name="author" content="Andre De Castro">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.6/sjcl.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/custom.css">
 
 </head>
 <body>
 <noscript>
-    <div class="alert alert-error">It seems JavaScript is either disabled or not supported by your browser.Please, enable JavaScript by changing your browser options.</div>
+	<div class="alert alert-error">It seems JavaScript is either disabled or not supported by your browser.Please, enable JavaScript by changing your browser options.</div>
 </noscript>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center ">
-            <h1>Independant Auditor App</h1>
-            <h2>Verify Document Against Blockchain Entry</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 ">
-            <p class="lead">
-                Tool for independent auditors to verify document and document package hashes.  Both the document and Transaction ID must be supplied by ISMS's Vendor Verifier application. The Hash produced from the document supplied is compared to a hash previously placed in a bitcoin blockchain transaction. By supplying both the Transaction ID and the Document to hash this tool will verify that the document's SHA 256 hash had been previously entered on the blockchain.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center ">
-
-                <div class="droppable">
-                    <div id ="add_doc">
-                        <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="45" height="32" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
-                        <br><p>Drop file here or <a href="#" >Click to select file</a></p>
-                    </div>
-                </div>
-        </div>
-            <!--<input id="iflDocument" type="file" >-->
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 text-center ">
-            <label for="itxTxid">Transaction ID: </label>
-            <input id="itxTxid"  type="text" maxlength="64" size="80" placeholder="Insert Blockchain Transaction ID"/>
-        </div>
-    </div>
-    <div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
-        <div >
-          <button class="btn btn-default" id="btnValidateDoc" onclick="validateDocument()">Validate Document</button>
-        </div>
-    </div>
-    <div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
-        <p id="docHash"></p>
-    </div>
-    <div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
-        <p id="msgBoard"></p>
-    </div>
-
-    <script language="JavaScript">
-        (function (context) {
-            var blkTrailApiRootEndPoint = 'https://api.blocktrail.com/v1/tbtc';    // Note: using testnet
-            var ctnNulldataScriptPrefix = 'OP_RETURN 43544e0201'; //Catenis Prefix used by Catenis Enterprise by Blockchain of Things
-
-            // DocValidate file class
-            function DocValidator(file, txid) {
-                this.validationRequested = false;
-                this.callback = undefined;
-                this.result = undefined;
-                this.error = undefined;
-                this.fileHash = undefined;
-                this.txInfo = undefined;
-                this.file = file;
-                this.txid = txid;
-
-                // Read file and compute its hash
-                computeFileHash.call(this);
-
-                // And retrieve transaction info
-                retrieveTxInfo.call(this);
-            }
-
-            DocValidator.blkTrailApiKey = undefined;
-
-            DocValidator.prototype.validateDocument = function (callback) {
-                var errMsg = undefined;
-
-                if (typeof callback === 'function') {
-                    this.callback = callback;
-                }
-
-                if (!this.fileHash || !this.txInfo) {
-                    // Cannot do anything yet. Indicate that validation has been requested and exit
-                    this.validationRequested = true;
-                }
-                else {
-                    if (this.fileHash.error) {
-                        errMsg = this.fileHash.error.read ? ('Failure reading document file: ' + getFileHashErrorDescription(this.fileHash.error.read))
-                            : ('Failure hashing document file: ' + getFileHashErrorDescription(this.fileHash.error.hash));
-                        this.error = new Error(errMsg);
-
-                        if (this.callback) {
-                            this.callback(this.error);
-                        }
-                        else {
-                            throw this.error;
-                        }
-                    }
-                    else if (this.txInfo.error) {
-                        errMsg = 'Failure retrieving transaction info: ' + getTxInfoErrorDescription(this.txInfo.error);
-                        this.error = new Error(errMsg);
-
-                        if (this.callback) {
-                            this.callback(this.error);
-                        }
-                        else {
-                            throw this.error;
-                        }
-                    }
-                    else {
-                        var ctnMessage = getMessageFromCatenisTx.call(this);
-
-                        if (ctnMessage) {
-                            var dochash = document.getElementById('docHash');
-                            dochash.innerText = "Hash in the transaction:\n" + ctnMessage;
-                            dochash.className = "bg-info";
-                            if (ctnMessage === this.fileHash.data) {
-                                // Success: document is valid
-                                this.result = {
-                                    hash: this.fileHash.data,
-                                    isValid: true
-                                };
-                            }
-                            else {
-                                // Failure: document is not valid
-                                this.result = {
-                                    hash: this.fileHash.data,
-                                    isValid: false
-                                }
-                            }
-
-                            if (this.callback) {
-                                this.callback(undefined, this.result);
-                            }
-                        }
-                        else {
-                            // Not a valid Catenis transaction
-                            errMsg = 'Failure validating the document: not a valid Catenis transaction';
-                            this.error = new Error(errMsg);
-
-                            if (this.callback) {
-                                this.callback(this.error);
-                            }
-                            else {
-                                throw this.error;
-                            }
-                        }
-                    }
-                }
-            };
-
-            function getMessageFromCatenisTx() {
-                var txInfo = this.txInfo.data;
-
-                if (typeof txInfo === 'object' && txInfo !== null && typeof txInfo.outputs === 'object' && Array.isArray(txInfo.outputs)
-                    && txInfo.outputs.length > 0 && typeof txInfo.outputs[0] === 'object' && txInfo.outputs[0] !== null
-                    && txInfo.outputs[0].type === 'op_return' && typeof txInfo.outputs[0].script === 'string'
-                    && txInfo.outputs[0].script.startsWith(ctnNulldataScriptPrefix)) {
-                    return txInfo.outputs[0].script.substr(ctnNulldataScriptPrefix.length);
-                }
-            }
-
-            function computeFileHash() {
-                var reader = new FileReader();
-                var _self = this;
-
-                // Finished reading the file
-                reader.onload = function (event) {
-                    try {
-                        _self.fileHash = {
-                            data: hashBuffer(event.target.result)
-                        };
-                    }
-                    catch (err) {
-                        _self.fileHash = {
-                            error: {
-                                hash: err
-                            }
-                        }
-                    }
-
-                    checkValidation.call(_self);
-                };
-
-                // File read has been aborted
-                reader.onabort = function (event) {
-                    _self.fileHash = {
-                        error: {
-                            read: new Error('File read aborted')
-                        }
-                    };
-
-                    checkValidation.call(_self);
-                };
-
-                // Error reading the file
-                reader.onerror = function (event) {
-                    _self.fileHash = {
-                        error: {
-                            read: event.target.error
-                        }
-                    };
-
-                    checkValidation.call(_self);
-                };
-
-                reader.readAsArrayBuffer(this.file);
-            }
-
-            function getFileHashErrorDescription(err) {
-                if (typeof DOMError !== 'undefined' && (err instanceof DOMError)) {
-                    return err.name;
-                }
-                else if (typeof FileError !== 'undefined' && (err instanceof FileError)) {
-                    return 'Error ' + err.code;
-                }
-                else {
-                    var errDesc = undefined;
-
-                    if (typeof err.toString === 'function') {
-                        errDesc = err.toString();
-                    }
-                    else {
-                        if (typeof err.name === 'string') {
-                            errDesc = err.name;
-                        }
-
-                        if (typeof err.message === 'string') {
-                            if (errDesc === undefined) {
-                                errDesc = err.message;
-                            }
-                            else {
-                                errDesc += ': ' + err.message;
-                            }
-                        }
-                    }
-
-                    return errDesc;
-                }
-            }
-
-            function getTxInfoErrorDescription(err) {
-                var errDesc = undefined;
-
-                if (err.readyState != 4) {
-                    errDesc = 'Failed to connect or connection aborted';
-                }
-                else {
-                    if (typeof err.status === 'number') {
-                        errDesc = '' + err.status;
-                    }
-
-                    if (typeof err.statusText === 'string' && err.statusText.length > 0) {
-                        if (errDesc === undefined) {
-                            errDesc = err.statusText;
-                        }
-                        else {
-                            errDesc += ' [' + err.statusText + ']';
-                        }
-                    }
-
-                    if (typeof err.responseJSON === 'object' && err.responseJSON !== null && typeof err.responseJSON.msg === 'string'
-                        && err.responseJSON.msg.length > 0) {
-                        if (errDesc === undefined) {
-                            errDesc = err.responseJSON.msg;
-                        }
-                        else {
-                            errDesc += ' - ' + err.responseJSON.msg;
-                        }
-                    }
-                }
-
-                return errDesc;
-            }
-
-            function retrieveTxInfo() {
-                var _self = this;
-
-                getTransactionReq(this.txid, function (err, data) {
-                    if (err) {
-                        _self.txInfo = {
-                            error: err
-                        }
-                    }
-                    else {
-                        _self.txInfo = {
-                            data: data
-                        }
-                    }
-                    checkValidation.call(_self);
-                })
-            }
-
-            function checkValidation() {
-                if (this.validationRequested && this.fileHash && this.txInfo) {
-                    this.validateDocument();
-                }
-            }
-
-            function buf2Hex(buffer) {
-                var byteArray = new Uint8Array(buffer);
-                var hexParts = [];
-                for(var i = 0; i < byteArray.length; i++) {
-                    var hex = byteArray[i].toString(16);
-                    var paddedHex = ('00' + hex).slice(-2);
-                    hexParts.push(paddedHex);
-                }
-
-                return hexParts.join('');
-            }
-
-            function hashBuffer(buffer) {
-                var data = sjcl.codec.hex.toBits(buf2Hex(buffer));
-
-                return sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(data));
-            }
-
-            function processRequestReturn(callback, data, returnType) {
-                if (returnType === 'error') {
-                    callback(data);
-                }
-                else if (returnType === 'success') {
-                    if (typeof data === 'object' && data !== null) {
-                        var objKeys = Object.keys(data);
-                        if (objKeys.length > 0 && objKeys[0] === 'error') {
-                            callback(data);
-                        }
-                        else {
-                            callback(undefined, data);
-                        }
-                    }
-                }
-            }
-
-            function getTransactionReq(txid, callback) {
-                var params = {
-                    url: [
-                        txid
-                    ]
-                };
-
-                var procReqRetFunc = processRequestReturn.bind(undefined, callback);
-
-                getRequest.call(this, 'transaction', params, {
-                    success: procReqRetFunc,
-                    error: procReqRetFunc
-                });
-            }
-
-            function getRequest(methodPath, params, result) {
-                var url = blkTrailApiRootEndPoint + '/' + methodPath;
-
-                if (typeof params === 'object' && params !== null) {
-                    if (typeof params.url === 'object' && Array.isArray(params.url)) {
-                        params.url.forEach(function (urlParam) {
-                            url += '/' + encodeURI(urlParam);
-                        });
-                    }
-
-                    var queryStr = 'api_key=' + DocValidator.blkTrailApiKey;
-                    if (typeof params.query === 'object' && params.query !== null) {
-                        for (var queryParam in params.query) {
-                            queryStr += '&' + encodeURI(queryParam) + '=' + encodeURI(params.query[queryParam]);
-                        }
-                    }
-                    url += '?' + queryStr;
-                }
-
-                this.reqParams = {
-                    url: url,
-                    type: "GET",
-                    success: result.success,
-                    error: result.error
-                };
-
-                $.ajax(this.reqParams);
-            }
-
-            // Export DocValidator function class
-            context.DocValidator = DocValidator;
-        })(this);
-    </script>
-
-    <script language="JavaScript">
-
-        // ***
-        // *** Replace with your own Blocktrail API key
-        // ***
-        DocValidator.blkTrailApiKey = 'replaceWithYourKey';
-        inputFile = undefined;
-        function requireDocument() {
-            var docFiles = inputFile;
-
-
-            if (docFiles && docFiles.length > 0) {
-                return true;
-            }
-            else {
-                alert('Please select a document file');
-                return false;
-            }
-        }
-
-        function requireTxid() {
-            var txid = document.getElementById('itxTxid').value;
-
-            if (txid && txid.length > 0) {
-                return true;
-            }
-            else {
-                alert('Please enter a transaction ID');
-                return false;
-            }
-        }
-
-        function isValidInputData() {
-            return requireDocument() && requireTxid();
-        }
-
-        function disableForm(disable) {
-            document.getElementById('iflDocument').disabled = disable;
-            document.getElementById('itxTxid').disabled = disable;
-            document.getElementById('btnValidateDoc').disabled = disable;
-        }
-
-        function displayMessage(msg, isError, isInfo) {
-            var msgBoard = document.getElementById('msgBoard');
-            msgBoard.className = isError ? 'bg-danger' : (isInfo ? 'bg-success' : 'bg-warning');
-            msgBoard.innerText = msg;
-        }
-
-        function validateDocument() {
-            if (isValidInputData()) {
-                var docValidator = (new DocValidator(inputFile[0], document.getElementById('itxTxid').value));
-
-
-                docValidator.validateDocument(function (err, result) {
-                    disableForm(false);
-
-                    if (err) {
-                        //alert(err.message);
-                        displayMessage(err.message, true);
-                    }
-                    else {
-                        if (result.isValid) {
-                            //alert('Document hash: ' + result.hash + '\n\nDocument is VALID');
-                            displayMessage('Document is VALID \n\nDocument hash: ' + result.hash, undefined, true);
-                        }
-                        else {
-                            //alert('Document hash: ' + result.hash + '\n\nDocument is NOT valid');
-                            displayMessage('WARNING: Document is NOT valid \n\nDocument hash: ' + result.hash, undefined, false);
-                        }
-                    }
-                });
-
-                disableForm(true);
-                displayMessage('Calculating hash and validating document. Please wait...', undefined, true);
-
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    </script>
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center ">
+			<h1>Independant Auditor App</h1>
+			<h2>Verify Document Against Blockchain Entry</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 ">
+			<p class="lead">
+				Tool for independent auditors to verify document and document package hashes.  Both the document and Transaction ID must be supplied by ISMS's Vendor Verifier application. The Hash produced from the document supplied is compared to a hash previously placed in a bitcoin blockchain transaction. By supplying both the Transaction ID and the Document to hash this tool will verify that the document's SHA 256 hash had been previously entered on the blockchain.
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center ">
+
+				<div class="droppable">
+					<div id ="add_doc">
+						<svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="45" height="32" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path></svg>
+						<br><p>Drop file here or <a href="#" >Click to select file</a></p>
+					</div>
+				</div>
+		</div>
+			<!--<input id="iflDocument" type="file" >-->
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center ">
+			<label for="itxTxid">Transaction ID: </label>
+			<input id="itxTxid"  type="text" maxlength="64" size="80" placeholder="Insert Blockchain Transaction ID"/>
+		</div>
+	</div>
+	<div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
+		<div >
+		  <button class="btn btn-default" id="btnValidateDoc" onclick="validateDocument()">Validate Document</button>
+		</div>
+	</div>
+	<div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
+		<p id="docHash"></p>
+	</div>
+	<div class="row col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1 text-center">
+		<p id="msgBoard"></p>
+	</div>
+
+	<script type="text/javascript">
+		(function (context) {
+			var blkTrailApiRootEndPoint = 'https://api.blocktrail.com/v1/tbtc';	// Note: using testnet
+			var ctnNulldataScriptPrefix = 'OP_RETURN 43544e0201'; //Catenis Prefix used by Catenis Enterprise by Blockchain of Things
+
+			// DocValidate file class
+			function DocValidator(file, txid) {
+				this.validationRequested = false;
+				this.callback = undefined;
+				this.result = undefined;
+				this.error = undefined;
+				this.fileHash = undefined;
+				this.txInfo = undefined;
+				this.file = file;
+				this.txid = txid;
+
+				// Read file and compute its hash
+				computeFileHash.call(this);
+
+				// And retrieve transaction info
+				retrieveTxInfo.call(this);
+			}
+
+			DocValidator.blkTrailApiKey = undefined;
+
+			DocValidator.prototype.validateDocument = function (callback) {
+				var errMsg = undefined;
+
+				if (typeof callback === 'function') {
+					this.callback = callback;
+				}
+
+				if (!this.fileHash || !this.txInfo) {
+					// Cannot do anything yet. Indicate that validation has been requested and exit
+					this.validationRequested = true;
+				}
+				else {
+					if (this.fileHash.error) {
+						errMsg = this.fileHash.error.read ? ('Failure reading document file: ' + getFileHashErrorDescription(this.fileHash.error.read))
+							: ('Failure hashing document file: ' + getFileHashErrorDescription(this.fileHash.error.hash));
+						this.error = new Error(errMsg);
+
+						if (this.callback) {
+							this.callback(this.error);
+						}
+						else {
+							throw this.error;
+						}
+					}
+					else if (this.txInfo.error) {
+						errMsg = 'Failure retrieving transaction info: ' + getTxInfoErrorDescription(this.txInfo.error);
+						this.error = new Error(errMsg);
+
+						if (this.callback) {
+							this.callback(this.error);
+						}
+						else {
+							throw this.error;
+						}
+					}
+					else {
+						var ctnMessage = getMessageFromCatenisTx.call(this);
+
+						if (ctnMessage) {
+							var dochash = document.getElementById('docHash');
+							dochash.innerText = "Hash in the transaction:\n" + ctnMessage;
+							dochash.className = "bg-info";
+							if (ctnMessage === this.fileHash.data) {
+								// Success: document is valid
+								this.result = {
+									hash: this.fileHash.data,
+									isValid: true
+								};
+							}
+							else {
+								// Failure: document is not valid
+								this.result = {
+									hash: this.fileHash.data,
+									isValid: false
+								}
+							}
+
+							if (this.callback) {
+								this.callback(undefined, this.result);
+							}
+						}
+						else {
+							// Not a valid Catenis transaction
+							errMsg = 'Failure validating the document: not a valid Catenis transaction';
+							this.error = new Error(errMsg);
+
+							if (this.callback) {
+								this.callback(this.error);
+							}
+							else {
+								throw this.error;
+							}
+						}
+					}
+				}
+			};
+
+			function getMessageFromCatenisTx() {
+				var txInfo = this.txInfo.data;
+
+				if (typeof txInfo === 'object' && txInfo !== null && typeof txInfo.outputs === 'object' && Array.isArray(txInfo.outputs)
+					&& txInfo.outputs.length > 0 && typeof txInfo.outputs[0] === 'object' && txInfo.outputs[0] !== null
+					&& txInfo.outputs[0].type === 'op_return' && typeof txInfo.outputs[0].script === 'string'
+					&& txInfo.outputs[0].script.startsWith(ctnNulldataScriptPrefix)) {
+					return txInfo.outputs[0].script.substr(ctnNulldataScriptPrefix.length);
+				}
+			}
+
+			function computeFileHash() {
+				var reader = new FileReader();
+				var _self = this;
+
+				// Finished reading the file
+				reader.onload = function (event) {
+					try {
+						_self.fileHash = {
+							data: hashBuffer(event.target.result)
+						};
+					}
+					catch (err) {
+						_self.fileHash = {
+							error: {
+								hash: err
+							}
+						}
+					}
+
+					checkValidation.call(_self);
+				};
+
+				// File read has been aborted
+				reader.onabort = function (event) {
+					_self.fileHash = {
+						error: {
+							read: new Error('File read aborted')
+						}
+					};
+
+					checkValidation.call(_self);
+				};
+
+				// Error reading the file
+				reader.onerror = function (event) {
+					_self.fileHash = {
+						error: {
+							read: event.target.error
+						}
+					};
+
+					checkValidation.call(_self);
+				};
+
+				reader.readAsArrayBuffer(this.file);
+			}
+
+			function getFileHashErrorDescription(err) {
+				if (typeof DOMError !== 'undefined' && (err instanceof DOMError)) {
+					return err.name;
+				}
+				else if (typeof FileError !== 'undefined' && (err instanceof FileError)) {
+					return 'Error ' + err.code;
+				}
+				else {
+					var errDesc = undefined;
+
+					if (typeof err.toString === 'function') {
+						errDesc = err.toString();
+					}
+					else {
+						if (typeof err.name === 'string') {
+							errDesc = err.name;
+						}
+
+						if (typeof err.message === 'string') {
+							if (errDesc === undefined) {
+								errDesc = err.message;
+							}
+							else {
+								errDesc += ': ' + err.message;
+							}
+						}
+					}
+
+					return errDesc;
+				}
+			}
+
+			function getTxInfoErrorDescription(err) {
+				var errDesc = undefined;
+
+				if (err.readyState != 4) {
+					errDesc = 'Failed to connect or connection aborted';
+				}
+				else {
+					if (typeof err.status === 'number') {
+						errDesc = '' + err.status;
+					}
+
+					if (typeof err.statusText === 'string' && err.statusText.length > 0) {
+						if (errDesc === undefined) {
+							errDesc = err.statusText;
+						}
+						else {
+							errDesc += ' [' + err.statusText + ']';
+						}
+					}
+
+					if (typeof err.responseJSON === 'object' && err.responseJSON !== null && typeof err.responseJSON.msg === 'string'
+						&& err.responseJSON.msg.length > 0) {
+						if (errDesc === undefined) {
+							errDesc = err.responseJSON.msg;
+						}
+						else {
+							errDesc += ' - ' + err.responseJSON.msg;
+						}
+					}
+				}
+
+				return errDesc;
+			}
+
+			function retrieveTxInfo() {
+				var _self = this;
+
+				getTransactionReq(this.txid, function (err, data) {
+					if (err) {
+						_self.txInfo = {
+							error: err
+						}
+					}
+					else {
+						_self.txInfo = {
+							data: data
+						}
+					}
+					checkValidation.call(_self);
+				})
+			}
+
+			function checkValidation() {
+				if (this.validationRequested && this.fileHash && this.txInfo) {
+					this.validateDocument();
+				}
+			}
+
+			function buf2Hex(buffer) {
+				var byteArray = new Uint8Array(buffer);
+				var hexParts = [];
+				for(var i = 0; i < byteArray.length; i++) {
+					var hex = byteArray[i].toString(16);
+					var paddedHex = ('00' + hex).slice(-2);
+					hexParts.push(paddedHex);
+				}
+
+				return hexParts.join('');
+			}
+
+			function hashBuffer(buffer) {
+				var data = sjcl.codec.hex.toBits(buf2Hex(buffer));
+
+				return sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(data));
+			}
+
+			function processRequestReturn(callback, data, returnType) {
+				if (returnType === 'error') {
+					callback(data);
+				}
+				else if (returnType === 'success') {
+					if (typeof data === 'object' && data !== null) {
+						var objKeys = Object.keys(data);
+						if (objKeys.length > 0 && objKeys[0] === 'error') {
+							callback(data);
+						}
+						else {
+							callback(undefined, data);
+						}
+					}
+				}
+			}
+
+			function getTransactionReq(txid, callback) {
+				var params = {
+					url: [
+						txid
+					]
+				};
+
+				var procReqRetFunc = processRequestReturn.bind(undefined, callback);
+
+				getRequest.call(this, 'transaction', params, {
+					success: procReqRetFunc,
+					error: procReqRetFunc
+				});
+			}
+
+			function getRequest(methodPath, params, result) {
+				var url = blkTrailApiRootEndPoint + '/' + methodPath;
+
+				if (typeof params === 'object' && params !== null) {
+					if (typeof params.url === 'object' && Array.isArray(params.url)) {
+						params.url.forEach(function (urlParam) {
+							url += '/' + encodeURI(urlParam);
+						});
+					}
+
+					var queryStr = 'api_key=' + DocValidator.blkTrailApiKey;
+					if (typeof params.query === 'object' && params.query !== null) {
+						for (var queryParam in params.query) {
+							queryStr += '&' + encodeURI(queryParam) + '=' + encodeURI(params.query[queryParam]);
+						}
+					}
+					url += '?' + queryStr;
+				}
+
+				this.reqParams = {
+					url: url,
+					type: "GET",
+					success: result.success,
+					error: result.error
+				};
+
+				$.ajax(this.reqParams);
+			}
+
+			// Export DocValidator function class
+			context.DocValidator = DocValidator;
+		})(this);
+	</script>
+
+	<script type="text/javascript">
+
+		// ***
+		// *** Replace with your own Blocktrail API key
+		// ***
+		DocValidator.blkTrailApiKey = 'replaceWithYourKey';
+		inputFile = undefined;
+		function requireDocument() {
+			var docFiles = inputFile;
+
+
+			if (docFiles && docFiles.length > 0) {
+				return true;
+			}
+			else {
+				alert('Please select a document file');
+				return false;
+			}
+		}
+
+		function requireTxid() {
+			var txid = document.getElementById('itxTxid').value;
+
+			if (txid && txid.length > 0) {
+				return true;
+			}
+			else {
+				alert('Please enter a transaction ID');
+				return false;
+			}
+		}
+
+		function isValidInputData() {
+			return requireDocument() && requireTxid();
+		}
+
+		function disableForm(disable) {
+			document.getElementById('iflDocument').disabled = disable;
+			document.getElementById('itxTxid').disabled = disable;
+			document.getElementById('btnValidateDoc').disabled = disable;
+		}
+
+		function displayMessage(msg, isError, isInfo) {
+			var msgBoard = document.getElementById('msgBoard');
+			msgBoard.className = isError ? 'bg-danger' : (isInfo ? 'bg-success' : 'bg-warning');
+			msgBoard.innerText = msg;
+		}
+
+		function validateDocument() {
+			if (isValidInputData()) {
+				var docValidator = (new DocValidator(inputFile[0], document.getElementById('itxTxid').value));
+
+
+				docValidator.validateDocument(function (err, result) {
+					disableForm(false);
+
+					if (err) {
+						//alert(err.message);
+						displayMessage(err.message, true);
+					}
+					else {
+						if (result.isValid) {
+							//alert('Document hash: ' + result.hash + '\n\nDocument is VALID');
+							displayMessage('Document is VALID \n\nDocument hash: ' + result.hash, undefined, true);
+						}
+						else {
+							//alert('Document hash: ' + result.hash + '\n\nDocument is NOT valid');
+							displayMessage('WARNING: Document is NOT valid \n\nDocument hash: ' + result.hash, undefined, false);
+						}
+					}
+				});
+
+				disableForm(true);
+				displayMessage('Calculating hash and validating document. Please wait...', undefined, true);
+
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	</script>
 
 <!-- document darg and drop functionality -->
 
-    <script language="JavaScript">
-        function makeDroppable(element, callback) {
+	<script type="text/javascript">
+		function makeDroppable(element, callback) {
 
-            var input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('id', 'iflDocument');
-            // input.setAttribute('multiple', true);
-            input.style.display = 'none';
+			var input = document.createElement('input');
+			input.setAttribute('type', 'file');
+			input.setAttribute('id', 'iflDocument');
+			// input.setAttribute('multiple', true);
+			input.style.display = 'none';
 
-            input.addEventListener('change', triggerCallback);
-            element.appendChild(input);
+			input.addEventListener('change', triggerCallback);
+			element.appendChild(input);
 
-            element.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                element.classList.add('dragover');
-            });
+			element.addEventListener('dragover', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				element.classList.add('dragover');
+			});
 
-            element.addEventListener('dragleave', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                element.classList.remove('dragover');
-            });
+			element.addEventListener('dragleave', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				element.classList.remove('dragover');
+			});
 
-            element.addEventListener('drop', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                element.classList.remove('dragover');
-                triggerCallback(e);
-            });
+			element.addEventListener('drop', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				element.classList.remove('dragover');
+				triggerCallback(e);
+			});
 
-            element.addEventListener('click', function() {
-                input.value = null;
-                input.click();
-            });
+			element.addEventListener('click', function() {
+				input.value = null;
+				input.click();
+			});
 
-            function triggerCallback(e) {
-                var files;
-                if(e.dataTransfer) {
-                    files = e.dataTransfer.files;
-                } else if(e.target) {
-                    files = e.target.files;
-                }
-                callback.call(null, files);
-            }
-        }
-        var element = document.querySelector('.droppable');
-        function pcallback(files) {
-            inputFile = files;
-            element.classList.add('dragover');
-            $('#add_doc').replaceWith('<div ><img src="img/file.png"><br><p>' + 'File Ready For Validation' + '</p></div>');
-            //console.log(files);
-        }
-        makeDroppable(element, pcallback);
-    </script>
+			function triggerCallback(e) {
+				var files;
+				if(e.dataTransfer) {
+					files = e.dataTransfer.files;
+				} else if(e.target) {
+					files = e.target.files;
+				}
+				callback.call(null, files);
+			}
+		}
+		var element = document.querySelector('.droppable');
+		function pcallback(files) {
+			inputFile = files;
+			element.classList.add('dragover');
+			$('#add_doc').replaceWith('<div ><img src="img/file.png"><br><p>' + 'File Ready For Validation' + '</p></div>');
+			//console.log(files);
+		}
+		makeDroppable(element, pcallback);
+	</script>
 
 </div>
 </body>
